@@ -17,8 +17,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
-// .then(() => console.log("MongoDB connected..."))
-// .catch((err) => console.log(err));
+
 
 mongoose.Promise = global.Promise;
 
@@ -44,7 +43,7 @@ app.use((req, res, next) => {
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
 app.use("/user", userRoutes);
-
+//Default route - throw error
 app.use((req, res, next) => {
   const error = new Error("not found");
   error.status = 404;
